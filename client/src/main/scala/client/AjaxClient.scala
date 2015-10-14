@@ -1,4 +1,4 @@
-package spatutorial.client.services
+package client
 
 import java.nio.ByteBuffer
 

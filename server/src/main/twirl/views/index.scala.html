@@ -10,8 +10,12 @@
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("/public","images/favicon.png")">
     </head>
     <body>
-        <div id="root">
+        <div>
+            <input type="text" id="input">
+
+            <div id="result">
+            </div>
+            @playscalajs.html.scripts("client")
         </div>
-        @playscalajs.html.scripts("client")
     </body>
 </html>

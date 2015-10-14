@@ -7,7 +7,7 @@ import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
  */
 object Settings {
   /** The name of your application */
-  val name = "scalajs-spa"
+  val name = "play-spa"
 
   /** The version of your application */
   val version = "1.0.2"
@@ -68,10 +68,12 @@ object Settings {
     "com.github.japgolly.scalajs-react" %%% "extra" % versions.scalajsReact,
     "com.github.japgolly.scalacss" %%% "ext-react" % versions.scalaCSS,
     "org.scala-js" %%% "scalajs-dom" % versions.scalaDom,
-    "com.lihaoyi" %%% "scalarx" % versions.scalaRx
+    "be.doeraene" %%% "scalajs-jquery" % versions.scalaDom,
+    "com.lihaoyi" %%% "scalarx" % versions.scalaRx,
+    "com.lihaoyi" %%% "scalatags" % "0.5.2"
   ))
 
-  /** Dependencies for external JS libs that are bundled into a single .js file according to dependency order */
+  /** Dependencies for externa  l JS libs that are bundled into a single .js file according to dependency order */
   val jsDependencies = Def.setting(Seq(
     "org.webjars" % "react" % versions.react / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
     "org.webjars" % "jquery" % versions.jQuery / "jquery.js" minified "jquery.min.js",
