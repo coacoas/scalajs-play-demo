@@ -3,6 +3,7 @@ package controllers
 import java.nio.ByteBuffer
 
 import boopickle.Default._
+import play.api.libs.json.Json
 import play.api.mvc._
 import services.ApiService
 import spatutorial.shared.Api
@@ -23,6 +24,15 @@ object Application extends Controller {
 
   def hello(name: String) = Action {
     Ok(apiService.motd(name))
+  }
+
+  def props = Action(parse.json) { request =>
+    val props = for {
+      key <- (request.body \ "key").asOpt[String]
+    } yield apiService.property(key)
+
+    props.map(p => Ok(Json.obj("props" -> Json.toJson(p))))
+      .getOrElse(BadRequest("Invalid request - send the key"))
   }
 
   def autowireApi(path: String) = Action.async(parse.raw) {
